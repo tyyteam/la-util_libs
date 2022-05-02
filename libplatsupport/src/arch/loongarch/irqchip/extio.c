@@ -24,7 +24,7 @@
  * we expect, and then return the interrupts specified in the device node.
  */
 
-static int parse_riscv_plic_interrupts(char *dtb_blob, int node_offset, int intr_controller_phandle,
+static int parse_loongarch_plic_interrupts(char *dtb_blob, int node_offset, int intr_controller_phandle,
                                        irq_walk_cb_fn_t callback, void *token)
 {
     bool is_extended = false;
@@ -73,8 +73,8 @@ static int parse_riscv_plic_interrupts(char *dtb_blob, int node_offset, int intr
     return 0;
 }
 
-char *riscv_plic_compatible_list[] = {
-    "riscv,plic0",
-    NULL
+char *loongarch_plic_compatible_list[] = {
+    //"riscv,plic0",
+    //NULL
 };
-DEFINE_IRQCHIP_PARSER(riscv_plic, riscv_plic_compatible_list, parse_riscv_plic_interrupts);
+DEFINE_IRQCHIP_PARSER(loongarch_plic, loongarch_plic_compatible_list, parse_loongarch_plic_interrupts);
