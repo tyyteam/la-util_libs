@@ -79,7 +79,11 @@ elseif(${KernelArch} STREQUAL "x86")
 elseif(${KernelArch} STREQUAL "riscv")
     list(APPEND deps src/arch/riscv/irqchip/plic.c)
     list(APPEND irqchip_modules "-Wl,--undefined=riscv_plic_ptr")
+elseif(${KernelArch} STREQUAL "loongarch")
+    list(APPEND deps src/arch/loongarch/irqchip/extio.c)
+    list(APPEND irqchip_modules "-Wl,--undefined=loongarch_extio_ptr")
 endif()
+
 
 if(KernelPlatformQEMUArmVirt)
     if(KernelArmExportPCNTUser AND KernelArmExportPTMRUser)
